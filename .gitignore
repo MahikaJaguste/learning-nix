@@ -1,3 +1,5 @@
 target/
 .envrc
 result/
+result*
+.DS_Store
