@@ -7,8 +7,7 @@ let
 
     src = attrs0.src or null;
 
-    cargoBuild = ''cargo build $cargo_build_options >> $cargo_build_output_json'';
-    cargoBuildOptions = [ ''-j "$NIX_BUILD_CORES"'' ];
+    cargoBuildOptions = attrs0.cargoBuildOptions or [];
 
     copyBins = attrs0.copyBins or true;
     copyLibs = attrs0.copyLibs or true;
@@ -18,7 +17,6 @@ let
   attrs = mkAttrs arg;
 
   buildConfig = {
-    cargoCommand = attrs.cargoBuild;
     pname =
       if ! isNull attrs.name
       then attrs.name
